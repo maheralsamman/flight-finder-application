@@ -17,7 +17,7 @@ const writeToFlights = (file) => {
   writeFileSync("flights.json", JSON.stringify(file), function writeJSON(err) {
     if (err) return console.log(err);
     console.log(JSON.stringify(file));
-    console.log("writing to file" + fileName);
+    console.log("writing to" + fileName);
   });
 };
 
