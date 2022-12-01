@@ -8,8 +8,8 @@ const Home = ({ flights }) => {
           flight.depatureDestination.toLowerCase() === searchTerms.departure.toLowerCase() &&
           flight.arrivalDestination.toLowerCase() === searchTerms.arrival.toLowerCase()) : 
           flights.filter(flight => 
-            flight.depatureDestination.toLowerCase() === searchTerms.departure.toLowerCase() &&
-            flight.arrivalDestination.toLowerCase() === searchTerms.arrival.toLowerCase() ||
+           ( flight.depatureDestination.toLowerCase() === searchTerms.departure.toLowerCase() &&
+            flight.arrivalDestination.toLowerCase() === searchTerms.arrival.toLowerCase()) ||
             flight.depatureDestination.toLowerCase() === searchTerms.arrival.toLowerCase() &&
             flight.arrivalDestination.toLowerCase() === searchTerms.departure.toLowerCase())
 
@@ -22,7 +22,7 @@ const Home = ({ flights }) => {
             itinerarie.avaliableSeats >= searchTerms.passengers 
             )
           )
-          const destinations = results.map(result => [result.depatureDestination,result.arrivalDestination] )
+          const destinations = results.map(result => [result.depatureDestination, result.arrivalDestination] )
 /*           console.log("destinations",destinations)
           console.log(flights) */
           setSearchedFlights([destinations, flights])
