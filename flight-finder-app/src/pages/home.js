@@ -19,7 +19,7 @@ const Home = ({ flights }) => {
           flights.itineraries.filter(itinerarie => 
             itinerarie.depatureAt >= searchTerms.depatureAt &&
             itinerarie.arriveAt <= searchTerms.arriveAt &&
-            itinerarie.avaliableSeats <= searchTerms.passengers 
+            itinerarie.avaliableSeats >= searchTerms.passengers 
             )
           )
           const destinations = results.map(result => [result.depatureDestination,result.arrivalDestination] )
