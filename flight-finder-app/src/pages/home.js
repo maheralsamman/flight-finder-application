@@ -10,8 +10,8 @@ const Home = ({ flights }) => {
           flights.filter(flight => 
            ( flight.depatureDestination.toLowerCase() === searchTerms.departure.toLowerCase() &&
             flight.arrivalDestination.toLowerCase() === searchTerms.arrival.toLowerCase()) ||
-            flight.depatureDestination.toLowerCase() === searchTerms.arrival.toLowerCase() &&
-            flight.arrivalDestination.toLowerCase() === searchTerms.departure.toLowerCase())
+            (flight.depatureDestination.toLowerCase() === searchTerms.arrival.toLowerCase() &&
+            flight.arrivalDestination.toLowerCase() === searchTerms.departure.toLowerCase()))
 
       if(results.length > 0){
        // console.log(results);
