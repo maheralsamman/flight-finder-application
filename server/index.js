@@ -1,5 +1,6 @@
 //const express = require('express');
 import express from "express";
+import cors from "cors"
 //import flights from './flights.json' assert { type: `json` };;
 //const flights = require('./flights.json');
 
@@ -20,6 +21,9 @@ const writeToFlights = (file) => {
     console.log("writing to file" + fileName);
   });
 };
+
+// use it before all route definitions
+app.use(cors({origin: 'http://localhost:3001'}));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
