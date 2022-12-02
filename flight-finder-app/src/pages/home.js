@@ -44,7 +44,7 @@ const Home = ({ flights }) => {
       <div>
         {/*console.log(searchedFlights[1][0][0])*/}
         <p><span>Outbound: </span>{searchedFlights[0][0][0] + " → " + searchedFlights[0][0][1]}</p>
-        {searchedFlights[1][0].map((flight,i) => 
+        {searchedFlights[1][0].map((flight,i) =>
         <div style={{border:"2px solid black"}} key={i}>
           <p>depatureAt: {flight.depatureAt}</p>
           <p>arriveAt: {flight.arriveAt}</p>
@@ -55,15 +55,45 @@ const Home = ({ flights }) => {
             <span>Child: {flight.prices[0].child}</span>
             <span>Currency: {flight.prices[0].currency}</span>
           </div>
-          }</div>
+          }
+          </div>
         </div>
-
         )}
       </div>
-        : searchedFlights.length && searchedFlights[1].length === 1 ? 
+        : searchedFlights.length && searchedFlights[1].length === 2 ? 
         <div>
        <p><span>Outbound: </span>{searchedFlights[0][0][0] + " → " + searchedFlights[0][0][1]}</p>
+       {searchedFlights[1][0].map((flight,i) =>
+        <div style={{border:"2px solid black"}} key={i}>
+          <p>depatureAt: {flight.depatureAt}</p>
+          <p>arriveAt: {flight.arriveAt}</p>
+          <p>avaliableSeats: {flight.avaliableSeats}</p>
+          <div>Prices: {
+          <div>
+            <span>Adult: {flight.prices[0].adult}</span>
+            <span>Child: {flight.prices[0].child}</span>
+            <span>Currency: {flight.prices[0].currency}</span>
+          </div>
+          }
+          </div>
+        </div>
+        )}
        <p><span>Return: </span>{searchedFlights[0][1][0] + " → " + searchedFlights[0][1][1]}</p>
+       {searchedFlights[1][1].map((returFlight,i) =>
+        <div style={{border:"2px solid black"}} key={i}>
+          <p>depatureAt: {returFlight.depatureAt}</p>
+          <p>arriveAt: {returFlight.arriveAt}</p>
+          <p>avaliableSeats: {returFlight.avaliableSeats}</p>
+          <div>Prices: {
+          <div>
+            <span>Adult: {returFlight.prices[0].adult}</span>
+            <span>Child: {returFlight.prices[0].child}</span>
+            <span>Currency: {returFlight.prices[0].currency}</span>
+          </div>
+          }
+          </div>
+        </div>
+        )}
        
      </div> : ""
      }
