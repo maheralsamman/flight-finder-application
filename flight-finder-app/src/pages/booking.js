@@ -94,7 +94,7 @@ const Booking = () => {
           </div>
         </div>
         <div>
-          {/* <BookingForm flight={location.state}/> */}
+           <BookingForm flight={location.state}/>
         </div>
       </div>
     );

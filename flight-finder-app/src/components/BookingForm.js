@@ -8,14 +8,15 @@ const BookingForm = ({ flight }) => {
   const [phone, setPhone] = useState("");
   const [pass, setPass] = useState("");
   const [email, setEmail] = useState("");
-  const { arriveAt, depatureAt, flightInfo } = flight;
+  
+/*   const { arriveAt, depatureAt, flightInfo } = flight;
   const flightId = flightInfo[2];
-
-  const getData = async () => {
+ */
+  const updateSeats = async (flightId, arriveAt, depatureAt) => {
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ arriveAt, depatureAt, seats: 10 }),
+      body: JSON.stringify({ arriveAt, depatureAt, seats: 2 }),
     };
     const response = await fetch(
       `http://localhost:3000/api/flights/${flightId}`,
@@ -38,7 +39,22 @@ const BookingForm = ({ flight }) => {
 
   const submit = () => {
     if (!firstName || !lastName || !phone || !pass || !email) return;
-    getData();
+    if(!flight.secondFlight){
+        const { arriveAt, depatureAt, flightInfo } = flight;
+        const flightId = flightInfo[2];
+        updateSeats(flightId, arriveAt, depatureAt);
+    }
+    if(flight.secondFlight){
+        console.log("flight",flight)
+        const { arriveAt:fiArriveAt, depatureAt:fiDepatureAt} = flight.firstFlight.flight;
+        const fiFlightId = flight.firstFlight.flightInfo[2]
+        const { arriveAt:seArriveAt, depatureAt:seDepatureAt } = flight.secondFlight.flight;
+        const seFlightId = flight.secondFlight.flightInfo[2]
+
+        updateSeats(fiFlightId, fiArriveAt, fiDepatureAt);
+        updateSeats(seFlightId, seArriveAt, seDepatureAt);
+    }
+
   };
   return (
     <div>
