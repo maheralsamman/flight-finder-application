@@ -1,6 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const OneWayTrip = ({ searchedFlights, flightDuration }) => {
+    const navigate = useNavigate();
+    const book = (flight) => {
+        navigate("/booking", {state:flight});
+    }
   return (
     <div>
       {/*console.log(searchedFlights[1][0][0])*/}
@@ -13,7 +18,7 @@ const OneWayTrip = ({ searchedFlights, flightDuration }) => {
           <p>depatureAt: {flight.depatureAt}</p>
           <p>arriveAt: {flight.arriveAt}</p>
           <p>
-            duration of flight:
+            duration of flight: 
             {flightDuration(flight.depatureAt, flight.arriveAt)} hour/s
           </p>
           <p>avaliableSeats: {flight.avaliableSeats}</p>
@@ -27,6 +32,7 @@ const OneWayTrip = ({ searchedFlights, flightDuration }) => {
               </div>
             }
           </div>
+          <button onClick={() => book(flight)}>Book this flight!</button>
         </div>
       ))}
     </div>

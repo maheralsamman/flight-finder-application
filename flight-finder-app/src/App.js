@@ -2,7 +2,7 @@ import { useState, useEffect  } from "react";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 
 import "./App.css";
-import About from "./pages/about";
+import Booking from "./pages/booking";
 import Home from "./pages/home";
 
 
@@ -13,12 +13,10 @@ function App() {
     const getData =async () => {
       const response = await fetch("http://localhost:3000/api/flights/");
       const data = await response.json();
-      console.log(data)
+      //console.log(data)
       setFlights(data);
     }
     getData();
-  
-
   }, [])
   
   
@@ -28,8 +26,9 @@ function App() {
             <h1>Header</h1>
       </header>
       <Routes>
-        <Route path="about" element={<About />} />
-        <Route index path="home" element={<Home flights={flights}/>} />
+        <Route index path="/" element={<Home  flights={flights}/>} />
+        <Route path="home" element={<Home flights={flights}/>} />
+        <Route path="booking" element={<Booking />} />
 
         {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
@@ -76,6 +75,11 @@ on available seats and the price for both adults and children,
 and also be displayed with the “book” button. 
 This could show by expanding the card size, but exactly how is up to you 
 --------------------------------
+
+
+
+
+
 The “book” button; clicking on it should redirect to 
 a new URL for booking the specific flight
 ---------------------------------
