@@ -6,7 +6,13 @@ const Confirmation = () => {
 
 
   return (
-    <div>Confirmation</div>
+    <div>
+        <p>
+        Confirmation
+        </p>
+
+        <p>{location.state.message}</p>
+    </div>
   )
 }
 

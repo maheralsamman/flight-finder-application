@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const TwoWaysTrip = ({ searchedFlights, flightDuration }) => {
+  const navigate = useNavigate();
+  const [firstFlight, setFirstFlight] = useState({});
+  const [btnDisabled, setBtnDisabled] = useState(false);
+
+  const chooseFirstFlight = (flight) => {
+    setFirstFlight({ flight, flightInfo: searchedFlights[0][0] });
+    setBtnDisabled(true);
+    alert("Scroll down and choose your flight back home");
+  };
+
+  const book = (secondFlight) => {
+    const twoWaysFlights = { firstFlight, secondFlight };
+    navigate("/booking", { state: twoWaysFlights });
+  };
   return (
     <div>
       <p>
@@ -26,6 +41,12 @@ const TwoWaysTrip = ({ searchedFlights, flightDuration }) => {
               </div>
             }
           </div>
+          <button
+            disabled={btnDisabled}
+            onClick={() => chooseFirstFlight(flight)}
+          >
+            Choose your first flight
+          </button>
         </div>
       ))}
       <p>
@@ -52,6 +73,13 @@ const TwoWaysTrip = ({ searchedFlights, flightDuration }) => {
               </div>
             }
           </div>
+          <button
+            onClick={() =>
+              book({ flight: returFlight, flightInfo: searchedFlights[0][1] })
+            }
+          >
+            Book this flight home!
+          </button>
         </div>
       ))}
     </div>
