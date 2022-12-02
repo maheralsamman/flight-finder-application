@@ -3,6 +3,7 @@ import { Routes, Route, Outlet, Link } from "react-router-dom";
 
 import "./App.css";
 import Booking from "./pages/booking";
+import Confirmation from "./pages/confirmation";
 import Home from "./pages/home";
 
 
@@ -29,6 +30,7 @@ function App() {
         <Route index path="/" element={<Home  flights={flights}/>} />
         <Route path="home" element={<Home flights={flights}/>} />
         <Route path="booking" element={<Booking />} />
+        <Route path="confirmation" element={<Confirmation />} />
 
         {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
