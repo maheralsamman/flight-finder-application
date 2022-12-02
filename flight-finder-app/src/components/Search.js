@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import DatePickArriveAt from "../components/DatePickArriveAt";
 import DatePickDepatureAt from "../components/DatePickDepatureAt";
 
-const Search = ({ search }) => {
+const Search = ({ search,setSearchedFlights,flights }) => {
   const [depatureAt, setDepatureAt] = useState(new Date());
   const [arriveAt, setArriveAt] = useState(new Date());
   const [departure, setDeparture] = useState("");
@@ -33,7 +33,7 @@ const Search = ({ search }) => {
       withReturn,
       passengers: +passengers,
       children: +children,
-    });
+    }, flights, setSearchedFlights);
     //console.log(flights[0].itineraries[0].depatureAt);
   };
   //console.log(date, "2022-12-12T12:30:00")
