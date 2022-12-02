@@ -14,7 +14,7 @@ function App() {
     const getData =async () => {
       const response = await fetch("http://localhost:3000/api/flights/");
       const data = await response.json();
-      //console.log(data)
+      console.log(data)
       setFlights(data);
     }
     getData();

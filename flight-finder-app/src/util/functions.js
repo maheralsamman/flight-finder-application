@@ -33,6 +33,7 @@ export const search = (searchTerms, flights, setSearchedFlights) => {
       const destinations = results.map((result) => [
         result.depatureDestination,
         result.arrivalDestination,
+        result.flight_id
       ]);
       /*           console.log("destinations",destinations)
           console.log(flights) */

@@ -8,9 +8,26 @@ const BookingForm = ({ flight }) => {
     const [phone, setPhone] = useState("")
     const [pass, setPass] = useState("")
     const [email, setEmail] = useState("")
+    const {arriveAt, depatureAt, flightInfo} = flight;
+    const flightId = flightInfo[2]
+
+    const getData = async () => {
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ arriveAt, depatureAt, seats:10})
+        };
+        const response = await fetch(`http://localhost:3000/api/flights/${flightId}`, requestOptions);
+        const data = await response.json();
+        if (response.ok) {
+            navigate("/confirmation", {state:{flight, firstName, lastName, phone, pass, email, message:data.message}});
+        }
+    }
+    
 
     const submit = () => {
-        navigate("/confirmation", {state:{flight, firstName, lastName, phone, pass, email}});
+        if(!firstName || !lastName || !phone || !pass || !email) return;
+        getData();
     }
   return (
     <div>

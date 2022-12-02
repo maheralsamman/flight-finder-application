@@ -6,13 +6,14 @@ import BookingForm from "../components/BookingForm";
 
 const Booking = () => {
   const location = useLocation();
-  //console.log(location.state.arriveAt);
-  const { arriveAt, avaliableSeats, depatureAt, prices } = location.state;
+  //console.log(location.state);
+  const { arriveAt, avaliableSeats, depatureAt, prices, flightInfo } = location.state;
   //console.log("booking", location.state)
   return (
     <div>
       <div className="bookingInfo">
-        <h1> Booking</h1>
+        <h1>Booking</h1>
+        <p>from {flightInfo[0]} to {flightInfo[1]}</p>
         <p>Depature at: {depatureAt}</p>
         <p>Arrive at: {arriveAt}</p>
         <p>
