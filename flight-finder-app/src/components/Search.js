@@ -9,6 +9,7 @@ const Search = ({ search }) => {
   const [arrival, setArrival] = useState("");
   const [withReturn, setWithReturn] = useState(false);
   const [passengers, setPassengers] = useState(0);
+  const [children, setChildren] = useState(0);
 
   const dateHandler = (date) => {
     const nowDepatureAt = new Date(date);
@@ -31,6 +32,7 @@ const Search = ({ search }) => {
       arriveAt: dateHandler(arriveAt),
       withReturn,
       passengers: +passengers,
+      children: +children,
     });
     //console.log(flights[0].itineraries[0].depatureAt);
   };
@@ -70,6 +72,17 @@ const Search = ({ search }) => {
           value={passengers}
           name=""
           onChange={(e) => setPassengers(e.target.value)}
+          id=""
+        />
+      </label>
+      <label>
+        How many children?
+        <input
+          type="number"
+          min="0"
+          value={children}
+          name=""
+          onChange={(e) => setChildren(e.target.value)}
           id=""
         />
       </label>
